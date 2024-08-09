@@ -49,6 +49,12 @@ const EditableTable = () => {
     );
   };
 
+  // Function to add a new row to the table
+  const addRow = () => {
+    const newRow = { id: data.length + 1, name: "", age: 0 };
+    setData([...data, newRow]);
+  };
+
   const columns = useMemo(
     () => [
       {
@@ -119,9 +125,9 @@ const EditableTable = () => {
                   key={header.id}
                   onClick={header.column.getToggleSortingHandler()}
                   style={{
-                    borderBottom: "solid 3px red",
+                    borderBottom: "solid 3px orange",
                     background: "aliceblue",
-                    color: "black",
+                    color: "blue",
                     fontWeight: "bold",
                     cursor: "pointer",
                   }}
@@ -147,7 +153,7 @@ const EditableTable = () => {
                   key={cell.id}
                   style={{
                     padding: "10px",
-                    border: "solid 1px gray",
+                    border: "solid 1px yellow",
                     background: "papayawhip",
                   }}
                 >
@@ -178,6 +184,9 @@ const EditableTable = () => {
           </strong>
         </span>
       </div>
+      <button onClick={addRow} style={{ marginTop: "10px", padding: "5px" }}>
+        Add Row
+      </button>
     </div>
   );
 };
